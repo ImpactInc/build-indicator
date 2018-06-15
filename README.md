@@ -2,11 +2,11 @@
 ### Impact, July 2018
 
 ## What is it?
-A device that keeps a team up-to-date on the status of various builds. Multicoloured RGB LEDs will indicate different branches and the relevant action that took place, with Text-to-Speech and a speaker tied in hand-in-hand.
+A device that keeps a team up-to-date on the status of various builds. Multicoloured RGB LEDs will display colours/patterns to indicate different branches and relevant actions that took place, with a speaker and Text-to-Speech tied in for additional info.
 
 ## Hardware
-A Raspberry Pi runs the show to keep us up to date with build statuses. 
-An LED strip featuring WS2812B RGB LEDs is driven by an Arduino Nano due to the fast data rates required by the LEDs; the Pi sends LED commands to the Arduino via TTL serial on the GPIO port. 
+A Raspberry Pi runs the show to keep us up to date with build statuses.
+An LED strip featuring WS2812B RGB LEDs is driven by an Arduino Nano due to the fast data rates required by the LEDs, with the Pi sending LED commands to the Arduino via TTL serial on the GPIO port.
 A speaker connected to the 3.5mm audio jack on the Pi will speak out relevant actions using Text-to-Speech.
 
 ## Implementation
