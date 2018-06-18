@@ -1,3 +1,12 @@
+/*
+Listens to an RSS feed with a specified refresh interval.
+Usage:
+	const rss_listener = require('./rss_listener');
+	rss_listener.listen(reqParams, config.listenInterval, onNewItems, onError);
+	
+https://github.com/ImpactInc/build-indicator/tree/master/nodejs
+*/
+
 const rss_parser_wrapper = require('./rss_parser_wrapper');
 
 var reqParams, reloadInterval, onNewItems, onError;

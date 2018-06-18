@@ -42,5 +42,6 @@ const onError = (err) => {
 const rss_listener = require('./rss_listener');
 rss_listener.listen(reqParams, config.listenInterval, onNewItems, onError);
 
+// Server
 //app.get('/', (req, res) => res.send('Hello World!'));
 //app.listen(8080, () => console.log('Example app listening on port 3000!'));
