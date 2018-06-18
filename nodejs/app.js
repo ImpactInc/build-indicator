@@ -29,14 +29,18 @@ const reqParams = {
 }
 
 // Function called whenever new items are available
-const onNewItems = function(items) {
+const onNewItems = (items) => {
     // Print out the new items
     items.forEach(item => console.log(item.pubDate + ', ' + item.title));
 }
 
+const onError = (err) => {
+	console.log('Error: ' + err);
+}
+
 // Start listening for new items. Interval is specified in seconds
 const rss_listener = require('./rss_listener');
-rss_listener.listen(reqParams, config.listenInterval, onNewItems);
+rss_listener.listen(reqParams, config.listenInterval, onNewItems, onError);
 
 //app.get('/', (req, res) => res.send('Hello World!'));
 //app.listen(8080, () => console.log('Example app listening on port 3000!'));
