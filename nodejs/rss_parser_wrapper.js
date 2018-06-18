@@ -1,5 +1,5 @@
 /*
-GETs and parses an RSS feed. The callback is returned with the contents as an
+Module to GET and parse an RSS feed. The callback is returned with the contents as an
 object, or an error if something went wrong.
 Usage:
 	const rss_parser_wrapper = require('./rss_parser_wrapper');
@@ -9,9 +9,9 @@ Usage:
 https://github.com/ImpactInc/build-indicator/tree/master/nodejs
 */
 
-exports.get = function(reqParams, callback) {
+exports.get = (reqParams, callback) => {
     // Run inside an IIFE to ensure reliable repeatibility
-    return (function() {
+    return (() => {
 
         var FeedParser = require('feedparser');
         var request = require('request'); // for fetching the feed

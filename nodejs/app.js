@@ -19,7 +19,7 @@ var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 
 // Basic authentication for testing
 var url = config.url.replace('://', '://' + encodeURIComponent(config.user) + ':' + encodeURIComponent(config.pass) + '@');
-//var url = 'https://srv.devjoe.com/impact/rss_samples/1.rss';
+//var url = 'https://srv.devjoe.com/impact/rss_samples/3.rss';
 
 // Paramaters for the 'request' module which will GET the URL
 const reqParams = {
@@ -34,13 +34,14 @@ const onNewItems = (items) => {
     items.forEach(item => console.log(item.pubDate + ', ' + item.title));
 }
 
+/*// Function called on error
 const onError = (err) => {
 	console.log('Error: ' + err);
-}
+}*/
 
 // Start listening for new items. Interval is specified in seconds
 const rss_listener = require('./rss_listener');
-rss_listener.listen(reqParams, config.listenInterval, onNewItems, onError);
+rss_listener.listen(reqParams, config.pollInterval, onNewItems/*, onError*/);
 
 // Server
 //app.get('/', (req, res) => res.send('Hello World!'));

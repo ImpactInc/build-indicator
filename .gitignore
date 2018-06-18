@@ -2,6 +2,7 @@
 
 #Node RSS listener/webserver configuration file:
 nodejs/config.json
+nodejs/out.txt
 
 #Node modules
 node_modules

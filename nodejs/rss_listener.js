@@ -1,5 +1,5 @@
 /*
-Listens to an RSS feed with a specified refresh interval.
+Module to listen for changes in an RSS feed with a specified refresh interval.
 Usage:
 	const rss_listener = require('./rss_listener');
 	rss_listener.listen(reqParams, config.listenInterval, onNewItems, onError);
@@ -9,7 +9,7 @@ https://github.com/ImpactInc/build-indicator/tree/master/nodejs
 
 const rss_parser_wrapper = require('./rss_parser_wrapper');
 
-var reqParams, reloadInterval, onNewItems, onError;
+var reqParams, pollInterval, onNewItems;//, onError;
 
 // To detect new items
 var mostRecentItemDate;
@@ -23,7 +23,8 @@ const rssReceived = (rss) => {
             // Store date in seconds since Epoch
             mostRecentItemDate = rss[0].pubDate / 1000;
         }
-
+        
+        // Filter items to those newer than the previously most recent date
         var newItems = rss.filter(item => (mostRecentItemDate < item.pubDate / 1000));
         if (newItems.length > 0) {
             // Sort by release (newest to oldest)
@@ -38,19 +39,26 @@ const rssReceived = (rss) => {
         }
 
         //console.log(mostRecentItemDate);
-
-        setTimeout(get, reloadInterval * 1000);
+        
+        // Load again after the given interval (sec -> msec)
+        setTimeout(get, pollInterval * 1000);
     }
+}
+
+const error = (err) => {
+	console.log(err);
+	console.log('Retrying in 5 seconds..');
+	setTimeout(get, 5000);
 }
 
 const get = () => {
     console.log('Loading feed...');
     rss_parser_wrapper.get(reqParams, (err, resp) => {
-        return err ? onError(err) : rssReceived(resp);
+        return err ? error(err) : rssReceived(resp);
     })
 }
 
-exports.listen = function(reqParams_, reloadInterval_, onNewItems_, onError_) {
-    reqParams = reqParams_, reloadInterval = reloadInterval_, onNewItems = onNewItems_, onError = onError_;
+exports.listen = (reqParams_, pollInterval_, onNewItems_/*, onError_*/) => {
+    reqParams = reqParams_, pollInterval = pollInterval_, onNewItems = onNewItems_;//, onError = onError_;
     get();
 }
