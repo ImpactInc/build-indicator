@@ -1,9 +1,9 @@
 # Impact Build Indicator gitignore
 
-#Node.js RSS listener/webserver Configuration file:
+#Node RSS listener/webserver configuration file:
 nodejs/config.json
 
-#Node.js modules
+#Node modules
 node_modules
 
 # Created by https://www.gitignore.io/api/c,node,python
