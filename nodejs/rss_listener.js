@@ -27,11 +27,11 @@ const rssReceived = (rss) => {
         // Filter items to those newer than the previously most recent date
         var newItems = rss.filter(item => (mostRecentItemDate < item.pubDate / 1000));
         if (newItems.length > 0) {
-            // Sort by release (newest to oldest)
-            newItems.sort((item1, item2) => (item2.pubDate / 1000 - item1.pubDate / 1000));
+            // Sort by release (oldest to newest)
+            newItems.sort((item1, item2) => (item1.pubDate / 1000 - item2.pubDate / 1000));
 
             // Update most recent date
-            mostRecentItemDate = newItems[0].pubDate / 1000;
+            mostRecentItemDate = newItems[newItems.length-1].pubDate / 1000;
 
             onNewItems(newItems);
         } else {
@@ -52,7 +52,7 @@ const error = (err) => {
 }
 
 const get = () => {
-    console.log('Loading feed...');
+    console.log('Loading feed at '+(new Date())+'...');
     rss_parser_wrapper.get(reqParams, (err, resp) => {
         return err ? error(err) : rssReceived(resp);
     })

@@ -8,11 +8,7 @@ Sample config.json file:
 }
 */
 
-// Using the feed-watcher package
 const fs = require('fs');
-const express = require('express');
-const app = express();
-
 // JSON configuration file stores the RSS URL, watch interval, and Basic Auth user/pass (for internal testing stages)
 var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 //console.log(config);
@@ -44,5 +40,21 @@ const rss_listener = require('./rss_listener');
 rss_listener.listen(reqParams, config.pollInterval, onNewItems/*, onError*/);
 
 // Server
+
+var express = require('express');
+var app = express();
+var router = express.Router();
+
+var staticPath = __dirname + '/static/';
+var webPath = __dirname + '/web/';
+
+router.get('/', function(req, res) {
+    res.sendFile(webPath + 'main.html');
+});
+app.use('/', router);
+
+app.use('/static', express.static(staticPath));
+
+
 //app.get('/', (req, res) => res.send('Hello World!'));
-//app.listen(8080, () => console.log('Example app listening on port 3000!'));
+app.listen(8080, () => console.log('Listening on port 8080.'));

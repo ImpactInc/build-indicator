@@ -1,5 +1,8 @@
 # Impact Build Indicator gitignore
 
+#Mac
+**/.DS_Store
+
 #Node RSS listener/webserver configuration file:
 nodejs/config.json
 nodejs/out.txt
