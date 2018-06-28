@@ -4,11 +4,9 @@
 **/.DS_Store
 
 #Node RSS listener/webserver configuration file:
-nodejs/config.json
-nodejs/out.txt
 
-#Node modules
-node_modules
+#All Node modules
+node_modules/
 
 # Created by https://www.gitignore.io/api/c,node,python
 

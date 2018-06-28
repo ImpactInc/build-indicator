@@ -1,0 +1,16 @@
+{
+  "name": "collector_mqtt",
+  "version": "1.0.0",
+  "description": "Build Indicator Bamboo build collector and MQTT publisher",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Impact",
+  "license": "MIT",
+  "dependencies": {
+    "async-polling": "^0.2.1",
+    "mqtt": "^2.18.1",
+    "request": "^2.87.0"
+  }
+}

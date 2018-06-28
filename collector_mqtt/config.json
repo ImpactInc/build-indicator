@@ -1,0 +1,7 @@
+{
+	"mqtt_address" : "mqtt://localhost",
+	"bamboo_address" : "https://INSERT_BAMBOO_ADDRESS_HERE",
+	"bamboo_user" : "INSERT_BAMBOO_USERNAME_HERE",
+	"bamboo_pass" : "INSERT_BAMBOO_PASSWORD_HERE",
+	"pollInterval" : 10
+}

@@ -1,7 +1,7 @@
 {
-  "name": "build-indicator",
+  "name": "pi_mqtt_listener",
   "version": "1.0.0",
-  "description": "Impact LED Build Indicator",
+  "description": "Build Indicator Raspberry Pi MQTT Listener",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,8 +9,7 @@
   "author": "Impact",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.3",
-    "feedparser": "^2.2.9",
+    "mqtt": "^2.18.1",
     "request": "^2.87.0"
   }
 }

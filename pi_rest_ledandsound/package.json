@@ -1,0 +1,16 @@
+{
+  "name": "pi_rest_ledandsound",
+  "version": "1.0.0",
+  "description": "Raspberry Pi LED and text to speech controller for build indicator, using REST API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Impact",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "serialport": "^6.2.0"
+  }
+}
