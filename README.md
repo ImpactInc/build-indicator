@@ -1,5 +1,5 @@
 # LED Build Indicator
-Infinitely extensible Raspberry Pi-based LED/speaker based build status indicator, for teams using **Atlassian's Bamboo** for continuous integration/deployment.
+Infinitely extensible Raspberry Pi-based build status indicator for teams using **Atlassian's Bamboo** for continuous integration/deployment.
 
 [![](images/darth_small.jpg "Our build indicator")](images/darth.jpg)
 
@@ -8,7 +8,7 @@ A device (and software behind the scenes) that keeps teams up to date on the sta
 Multiple projects and branches can be tracked, and an addressable RGB LED strip will flash/animate to indicate when things change; speaker output can utilise text-to-speech to communicate further information.
 
 ## How it works
-A collector script periodically polls Bamboo's APIs to check for new builds, and utilises MQTT to notify any Raspberry Pi listeners on what's happened. The Pis receive the data, and if relevant to the projects/branches they're interested in, they will flash/animate the RGB LEDs and play a sound/speak.
+A collector periodically polls Bamboo's APIs to check for new builds, and utilises MQTT messages to notify any Raspberry Pi listeners of these changes. The Pis receive the data, and if relevant to the projects/branches they're interested in, they will flash/animate the RGB LEDs and play a sound/speak.
 
 ## Hardware
 * (Optional) server to run the collector script to poll Bamboo data and publish build change messages. This can be run directly on the..
@@ -17,8 +17,7 @@ A collector script periodically polls Bamboo's APIs to check for new builds, and
 * Addressable RGB LED strip, featuring WS2812B RGB LEDs
 * Audio speaker - connects to the Pi's standard 3.5mm audio jack
 
-The LED strip is driven by an Arduino Nano due to the fast data rates required by the LEDs, with the Pi sending LED commands to the Arduino via TTL serial on the GPIO port using the [Glediator protocol](https://metalab.at/wiki/Blinkenschild).  
-The speaker will speak out relevant actions using Text-to-Speech.
+The LED strip is driven by an Arduino Nano due to the fast data rates required by the LEDs, with the Pi sending LED commands to the Arduino via TTL serial on the GPIO port, making use of the [Glediator protocol](https://metalab.at/wiki/Blinkenschild). The speaker will speak out relevant actions using text-to-speech.
 
 ### Schematic
 ![](images/schematic.jpg "Hardware schematic")
