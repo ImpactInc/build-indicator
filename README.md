@@ -51,7 +51,7 @@ This should be set up securely with appropriate auth.
 
 ### Arduino
 
-[See Arduino instructions here](arduino/).
+Our Arduino software instructions are available [here](arduino/).
 
 ## Configuration
 
@@ -60,12 +60,13 @@ This should be set up securely with appropriate auth.
 * `collector_mqtt/config.json` - Enter your MQTT broker and Bamboo server addresses, and the user/pass combo that should be used to access Bamboo via BASIC authentication. The poll interval (in seconds) specifies how frequently Bamboo will be polled.
 * `pi_mqtt_listener/config.json` - Enter your MQTT broker address.
 
-Note that the MQTT broker address defaults to `mqtt://localhost` if Mosquitto is installed on the same device as that of the configuration file.
+Note that the default MQTT broker address of `mqtt://localhost` works if Mosquitto is installed on the same device as that of the configuration file.
 Additional LED bank and animation configuration is also provided in these configuration files.
 
 ### Project and Branch selection
 
-Within `collector_mqtt/config.json`, there are fields for entering one or more regular expressions for project and branch matching. When build status messages are received, the project and branch values are tested with the regular expressions defined in the `config.json`, and if matched it is accepted as a message intended for said specific Raspberry Pi. The fields `resultKey` and `chainName`, as returned by Bamboo APIs, represent the project and branch respectively; thus, arrays `resultKeys` and `chainNames` are provided in the `config.json`.
+Within `collector_mqtt/config.json`, there are fields for entering one or more regular expressions for project and branch matching. When build status messages are received, the project and branch values are tested with the regular expressions defined in the `config.json`, and if matched it is accepted as a message intended for said specific Raspberry Pi.  
+The fields `resultKey` and `chainName`, as returned by Bamboo APIs, represent the project and branch respectively; thus, arrays `resultKeys` and `chainNames` are provided in the `config.json`.
 
 #### Examples
 
@@ -95,14 +96,13 @@ To match a branch named `CORE` (exact):
 
 ### Raspberry Pi Hardware
 
-* [Disable serial port terminal output](https://www.cube-controls.com/2015/11/02/disable-serial-port-terminal-output-on-raspbian/)
-to allow use of the serial port for Arduino communication.
-* Configure your audio settings to output to the 3.5mm audio jack.
+* [Disable the Pi's serial port console/terminal output](https://www.cube-controls.com/2015/11/02/disable-serial-port-terminal-output-on-raspbian/)
+to facilitate the use of the serial port for Arduino communication.
+* Configure your audio settings to output to the 3.5mm audio jack instead of the HDMI output, if used without a monitor.
 
 ## Usage
 
-Start up the separate Node.js scripts. Nodemon is used for reliability as it automatically restarts the script after a crash.
-From the repo, run the following on the Pi:
+From the repo root, run the following commands on the Pi to start up the separate Node.js scripts:
 ```
 cd pi_rest_ledandsound/
 screen -dm -S pi_rest_ledandsound nodemon app.js
@@ -121,11 +121,11 @@ The screen instances can be attached to by listing them with `screen -ls`, and r
 
 ### Demo
 
-A demo script, `demo.sh`, is provided in the repo root; it runs the `mosquitto_pub` command with sample data which works with the example configuration files' regular expression to provide a sweet demo!
+A demo script, `demo.sh`, is provided in the repo root; it uses the `mosquitto_pub` command to publish multiple MQTT mock messages which, along with the default configuration for project/branch regular expressions, provide a sweet demo! The Node.js scripts in `pi_rest_ledandsound/` and `pi_mqtt_listener/` both need to be running for this to function, as it's essentially emulating the messages that the Bamboo collector would be publishing from real build changes.
 
 ## Potential issues
 
-Appropriate permissions should be granted to allow execution of `pi_rest_ledandsound/tts.sh` in order for text to speech to work correctly.
+Appropriate permissions should be granted to allow the execution of `pi_rest_ledandsound/tts.sh` in order for text to speech to work correctly.
 
 ## Authors
 
@@ -138,7 +138,7 @@ Also, see the list of [contributors](https://github.com/ImpactInc/build-indicato
 ## Acknowledgments
 
 * **Christiaan Witts** - [ChristianWitts](https://github.com/ChristianWitts) - API help and advice
-* Werner van Rensburg - API help, hardware, and other support!
+* Werner van Rensburg - API help, hardware, and extra support!
 
 ## License
 
