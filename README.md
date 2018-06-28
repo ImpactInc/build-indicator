@@ -63,6 +63,34 @@ We made use of the default configuration for initial testing, however this shoul
 Note that the MQTT broker address defaults to `mqtt://localhost` if Mosquitto is installed on the same device as that of the configuration file.
 Additional LED bank and animation configuration is also provided in these configuration files.
 
+### Project and Branch selection
+
+Within `collector_mqtt/config.json`, there are fields for entering one or more regular expressions for project and branch matching. When build status messages are received, the project and branch values are tested with the regular expressions defined in the `config.json`, and if matched it is accepted as a message intended for said specific Raspberry Pi. The fields `resultKey` and `chainName`, as returned by Bamboo APIs, represent the project and branch respectively; thus, arrays `resultKeys` and `chainNames` are provided in the `config.json`.
+
+#### Examples
+
+To match any project starting with `MAIN`:
+```
+"resultKeys":[
+    "^MAIN"
+]
+```
+
+To match any branch starting with `MAIN` **or** ending with `BETA`:
+```
+"chainNames":[
+    "^MAIN",
+    "BETA$"
+]
+```
+
+To match a branch named `CORE` (exact):
+```
+"chainNames":[
+    "^CORE$"
+]
+```
+
 ### Raspberry Pi Hardware
 
 * [Disable serial port terminal output](https://www.cube-controls.com/2015/11/02/disable-serial-port-terminal-output-on-raspbian/)
@@ -75,18 +103,27 @@ Start up the separate Node.js scripts. Nodemon is used for reliability as it aut
 From the repo, run the following on the Pi:
 ```
 cd pi_rest_ledandsound/
-screen -S pi_rest_ledandsound nodemon app.js
+screen -dm -S pi_rest_ledandsound nodemon app.js
 ```
 Then again, from the repo run the following on the Pi:
 ```
 cd pi_mqtt_listener/
-screen -S pi_mqtt_listener nodemon app.js
+screen -dm -S pi_mqtt_listener nodemon app.js
 ```
 Finally, again from the repo run the following on either the Pi or external server (along with prerequisite configuration):
 ```
 cd collector_mqtt/
-screen -S collector_mqtt nodemon app.js
+screen -dm -S collector_mqtt nodemon app.js
 ```
+The screen instances can be attached to by listing them with `screen -ls`, and running `screen -r <label>` for the relevant one.
+
+### Demo
+
+A demo script, `demo.sh`, is provided in the repo root; it runs the `mosquitto_pub` command with sample data which works with the example configuration files' regular expression to provide a sweet demo!
+
+## Potential issues
+
+Appropriate permissions should be granted to allow execution of `pi_rest_ledandsound/tts.sh` in order for text to speech to work correctly.
 
 ## Authors
 
