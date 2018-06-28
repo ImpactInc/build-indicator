@@ -1,6 +1,6 @@
 # LED Build Indicator
 Infinitely extensible Raspberry Pi-based LED/speaker based build status indicator, for teams using **Atlassian's Bamboo** for continuous integration/deployment.
-[![Our build indicator](images/darth_small.jpg "Our build indicator"](images/darth.jpg)
+[![](images/darth_small.jpg "Our build indicator")](images/darth.jpg)
 
 ### What is it?
 A device (and software behind the scenes) that keeps teams up to date on the status of various builds.
