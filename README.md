@@ -3,7 +3,7 @@ Infinitely extensible Raspberry Pi-based LED/speaker based build status indicato
 
 [![](images/darth_small.jpg "Our build indicator")](images/darth.jpg)
 
-## What it is
+## What is it?
 A device (and software behind the scenes) that keeps teams up to date on the status of various builds.
 Multiple projects and branches can be tracked, and an addressable RGB LED strip will flash/animate to indicate when things change; speaker output can utilise text-to-speech to communicate further information.
 
@@ -25,10 +25,6 @@ The speaker will speak out relevant actions using Text-to-Speech.
 
 ## Installation
 
-### Arduino
-
-[See Arduino instructions here](arduino/).
-
 ### Node.js
 
 Install Node.js on your Raspberry Pi; we happened to make use of version `6.12.2`.
@@ -49,7 +45,13 @@ Note that `collector_mqtt` can instead be installed and run on another server or
 Install the Mosquitto MQQT broker on your Raspberry Pi or external server; [see here](https://learn.adafruit.com/diy-esp8266-home-security-with-lua-and-mqtt/configuring-mqtt-on-the-raspberry-pi).
 We made use of the default configuration for initial testing, however this should be setup securely with appropriate auth.
 
-Install pico2wave - [see here](https://elinux.org/RPi_Text_to_Speech_(Speech_Synthesis))
+### pico2wave
+
+[Set up pico2wave](https://elinux.org/RPi_Text_to_Speech_(Speech_Synthesis)) for speech synthesis.
+
+### Arduino
+
+[See Arduino instructions here](arduino/).
 
 ## Configuration
 
@@ -64,13 +66,13 @@ Additional LED bank and animation configuration is also provided in these config
 ### Raspberry Pi Hardware
 
 * [Disable serial port terminal output](https://www.cube-controls.com/2015/11/02/disable-serial-port-terminal-output-on-raspbian/)
-to allow use of the serial port for Arduino communication
+to allow use of the serial port for Arduino communication.
 * Configure your audio settings to output to the 3.5mm audio jack.
 
 ## Usage
 
 Start up the separate Node.js scripts. Nodemon is used for reliability as it automatically restarts the script after a crash.
-From the repo, run the following on the Pi yo fo do:
+From the repo, run the following on the Pi:
 ```
 cd pi_rest_ledandsound/
 screen -S pi_rest_ledandsound nodemon app.js
@@ -80,7 +82,7 @@ Then again, from the repo run the following on the Pi:
 cd pi_mqtt_listener/
 screen -S pi_mqtt_listener nodemon app.js
 ```
-Finally, again from the repo run the following on the Pi or external server:
+Finally, again from the repo run the following on either the Pi or external server (along with prerequisite configuration):
 ```
 cd collector_mqtt/
 screen -S collector_mqtt nodemon app.js
@@ -96,8 +98,8 @@ Also, see the list of [contributors](https://github.com/ImpactInc/build-indicato
 
 ## Acknowledgments
 
-* **Christiaan Witts** - [ChristianWitts](https://github.com/ChristianWitts) - for all the API help
-* Werner van Rensburg - tons of API help and other support!
+* **Christiaan Witts** - [ChristianWitts](https://github.com/ChristianWitts) - API help and advice
+* Werner van Rensburg - API help, hardware, and other support!
 
 ## License
 
