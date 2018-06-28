@@ -1,8 +1,8 @@
 # Arduino Glediator to WS2812B Receiver sketch
 
-##Usage
+## Usage
 
-###Prerequisites
+### Prerequisites
 
 Install the [FastLED](http://fastled.io/) library within the Arduino IDE.
 
