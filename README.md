@@ -43,7 +43,7 @@ Note that `collector_mqtt` can instead be installed and run on another server or
 ### Mosquitto
 
 Install the Mosquitto MQQT broker on your Raspberry Pi or external server; [see here](https://learn.adafruit.com/diy-esp8266-home-security-with-lua-and-mqtt/configuring-mqtt-on-the-raspberry-pi).
-We made use of the default configuration for initial testing, however this should be setup securely with appropriate auth.
+This should be set up securely with appropriate auth.
 
 ### pico2wave
 
