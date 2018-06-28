@@ -3,11 +3,11 @@ Infinitely extensible Raspberry Pi-based LED/speaker based build status indicato
 
 [![](images/darth_small.jpg "Our build indicator")](images/darth.jpg)
 
-### What is it?
+## What it is
 A device (and software behind the scenes) that keeps teams up to date on the status of various builds.
 Multiple projects and branches can be tracked, and an addressable RGB LED strip will flash/animate to indicate when things change; speaker output can utilise text-to-speech to communicate further information.
 
-### How does it work?
+## How it works
 A collector script periodically polls Bamboo's APIs to check for new builds, and utilises MQTT to notify any Raspberry Pi listeners on what's happened. The Pis receive the data, and if relevant to the projects/branches they're interested in, they will flash/animate the RGB LEDs and play a sound/speak.
 
 ## Hardware
@@ -26,13 +26,14 @@ The speaker will speak out relevant actions using Text-to-Speech.
 ## Installation
 
 ### Arduino
-Upload the [Glediator-to-WS2812B sketch](arduino/) to the Arduino Nano board. Be sure to update the constants at the top of the sketch with the number of RGB LEDs you will be using in your strip.
+
+[See Arduino instructions here](arduino/).
 
 ### Node.js
 
 Install Node.js on your Raspberry Pi; we happened to make use of version `6.12.2`.
 
-Install nodemon:
+Install [nodemon](https://nodemon.io/):
 ```
 npm install -g nodemon
 ```
@@ -52,10 +53,19 @@ Install pico2wave - [see here](https://elinux.org/RPi_Text_to_Speech_(Speech_Syn
 
 ## Configuration
 
+### Software
+
 * `collector_mqtt/config.json` - Enter your MQTT broker and Bamboo server addresses, and the user/pass combo that should be used to access Bamboo via BASIC authentication. The poll interval (in seconds) specifies how frequently Bamboo will be polled.
 * `pi_mqtt_listener/config.json` - Enter your MQTT broker address.
+
 Note that the MQTT broker address defaults to `mqtt://localhost` if Mosquitto is installed on the same device as that of the configuration file.
 Additional LED bank and animation configuration is also provided in these configuration files.
+
+### Raspberry Pi Hardware
+
+* [Disable serial port terminal output](https://www.cube-controls.com/2015/11/02/disable-serial-port-terminal-output-on-raspbian/)
+to allow use of the serial port for Arduino communication
+* Configure your audio settings to output to the 3.5mm audio jack.
 
 ## Usage
 
