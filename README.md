@@ -69,6 +69,8 @@ Within `collector_mqtt/config.json`, there are fields for entering one or more r
 
 #### Examples
 
+(excerpt from `collector_mqtt/config.json`)
+
 To match any project starting with `MAIN`:
 ```
 "resultKeys":[
