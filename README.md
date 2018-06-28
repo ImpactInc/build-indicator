@@ -21,7 +21,7 @@ The LED strip is driven by an Arduino Nano due to the fast data rates required b
 The speaker will speak out relevant actions using Text-to-Speech.
 
 ### Schematic
-![Hardware schematic](images/schematic.png "Hardware schematic")
+![](images/schematic.jpg "Hardware schematic")
 
 ## Installation
 
