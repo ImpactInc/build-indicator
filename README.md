@@ -24,7 +24,9 @@ The LED strip is driven by an Arduino Nano due to the fast data rates required b
 
 ## Installation
 
-### Node.js
+### Prerequisites
+
+#### Node.js
 
 Install Node.js on your Raspberry Pi (and optional server); we happened to make use of version `6.12.2`.
 Here is a useful guide for setting up a fresh Raspberry Pi and installing Node.js  from [this DaveJ](http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi)
@@ -35,23 +37,25 @@ Install [nodemon](https://nodemon.io/):
 npm install -g nodemon
 ```
 
+#### Mosquitto
+
+Install the Mosquitto MQQT broker on your Raspberry Pi or external server - [see here](https://learn.adafruit.com/diy-esp8266-home-security-with-lua-and-mqtt/configuring-mqtt-on-the-raspberry-pi). This should be set up securely with appropriate auth.
+
+#### pico2wave
+
+[Install pico2wave](https://elinux.org/RPi_Text_to_Speech_(Speech_Synthesis)) on the Raspberry Pi for speech synthesis.
+
+#### Arduino
+
+Install the Glediator protocol receiver on the Arduino - our instructions are available [here](arduino/).
+
+### Build Indicator
+
 Clone this repo and navigate to the `pi_mqtt_listener`, `pi_rest_ledandsound` anf `collector_mqtt` directories respectively; within each, run the following to install required Node packages:
 ```
 npm install
 ```
 Note that `collector_mqtt` can instead be installed and run on another server or device instead of the Pi.
-
-### Mosquitto
-
-Install the Mosquitto MQQT broker on your Raspberry Pi or external server - [see here](https://learn.adafruit.com/diy-esp8266-home-security-with-lua-and-mqtt/configuring-mqtt-on-the-raspberry-pi). This should be set up securely with appropriate auth.
-
-### pico2wave
-
-[Install pico2wave](https://elinux.org/RPi_Text_to_Speech_(Speech_Synthesis)) on the Raspberry Pi for speech synthesis.
-
-### Arduino
-
-Install the Glediator protocol receiver on the Arduino - our instructions are available [here](arduino/).
 
 ## Configuration
 
