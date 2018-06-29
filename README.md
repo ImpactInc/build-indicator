@@ -133,7 +133,7 @@ Appropriate permissions should be granted to allow the execution of `pi_rest_led
 ## Authors
 
 * **Joseph Rautenbach** - [joeraut](https://github.com/joeraut)
-* **Johan Fouche**
+* **Johan Fouche**  - [narfiez](https://github.com/narfiez)
 * **William Sykes** - [williamsykes](https://github.com/williamsykes)
 
 Also, see the list of [contributors](https://github.com/ImpactInc/build-indicator/graphs/contributors) who participated in this project.
