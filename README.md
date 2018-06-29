@@ -28,9 +28,8 @@ The LED strip is driven by an Arduino Nano due to the fast data rates required b
 
 #### Node.js
 
-Install Node.js on your Raspberry Pi (and optional server); we happened to make use of version `6.12.2`.
-Here is a useful guide for setting up a fresh Raspberry Pi and installing Node.js  from [this DaveJ](http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi)
-Remember to change the version if you don't want the latest version. Some of these steps my be skipped for this project. Use your own discretion.
+[Install Node.js on your Raspberry Pi](http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi) (and optional server); we happened to make use of version `6.12.2`.  
+Be sure to change the version whilst installing if you don't want the latest version. Some of these steps my be skipped for this project. Use your own discretion.
 
 Install [nodemon](https://nodemon.io/):
 ```
