@@ -105,6 +105,12 @@ to facilitate the use of the serial port for Arduino communication.
 
 ## Usage
 
+#### Optional shortcut
+From the repo root, run the following command on the pi to start each of the 3 Node.js scrips in their own screen:
+```
+./runall.sh
+```
+#### Alternatively
 From the repo root, run the following commands on the Pi to start up the separate Node.js scripts:
 ```
 cd pi_rest_ledandsound/
