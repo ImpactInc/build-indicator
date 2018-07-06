@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ##Text to speech
-
+play "saber_on.mp3"
 pico2wave -l en-GB -w clean.wav "$1"      ## Use offline Pico TTS and create a wav file of the string from arguement $1 
-sox clean.wav darth.wav pitch -580 echo 0.8 0.88 40 0.5 bass +5 treble +5 gain -n 
+sox clean.wav darth.wav pitch -580 echo 0.8 0.88 40 0.5 bass +3 treble +3 gain -n -8
 ## Drop pitch, add echo, boost bass and treble, normalise 
 
 
