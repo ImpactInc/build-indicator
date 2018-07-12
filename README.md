@@ -26,10 +26,47 @@ The LED strip is driven by an Arduino Nano due to the fast data rates required b
 
 ### Prerequisites
 
+### Raspberry Pi OS
+
+We used NOOBS OS Installer on 16GB Class 10 SD cards.
+[OS download](https://www.raspberrypi.org/downloads/)
+Download and follow instructions.
+
+### Install updates
+```
+sudo apt update
+
+sudo apt full-upgrade -y
+```
+
+### Settings on the Raspberry Pi
+
+Once the operating system is set up, open the command Terminal. Type
+```
+sudo raspi-config
+```
+Go to Interfacing Options, SSH, Enable SSH.
+
+Go to Interfacing Options, Serial, disable login shell, enable serial port hardware.
+
+Finish and reboot.
+
 #### Node.js
 
-[Install Node.js on your Raspberry Pi](http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi) (and optional server); we happened to make use of version `6.12.2`.  
-Be sure to change the version whilst installing if you don't want the latest version. Some of these steps my be skipped for this project. Use your own discretion.
+Install Node Version Manager if you want to easily install a specific version and be able to switch between versions:
+[NVM](https://github.com/creationix/nvm#install-script)
+
+Terminal:
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+```
+Restart terminal.
+
+We used Node.js version 6.12.2 (also installs NPM)
+```
+nvm install 6.12.2
+```
+Alternative guide for installing node.js by [this DaveJ](http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi).
 
 Install [nodemon](https://nodemon.io/):
 ```
@@ -39,10 +76,30 @@ npm install -g nodemon
 #### Mosquitto
 
 Install the Mosquitto MQQT broker on your Raspberry Pi or external server - [see here](https://learn.adafruit.com/diy-esp8266-home-security-with-lua-and-mqtt/configuring-mqtt-on-the-raspberry-pi). This should be set up securely with appropriate auth.
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+sudo apt-get install mosquitto mosquitto-clients
+```
 
 #### pico2wave
 
 [Install pico2wave](https://elinux.org/RPi_Text_to_Speech_(Speech_Synthesis)) on the Raspberry Pi for speech synthesis.
+
+Install the supporting packages, then install Pico Text to Speech.
+
+### SoX
+Install SoX package.
+```
+sudo apt-get install sox libsox-fmt-all
+```
+
+### Screen
+Install Screen.
+```
+sudo apt-get install screen
+```
 
 #### Arduino
 
