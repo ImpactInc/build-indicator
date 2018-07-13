@@ -191,7 +191,14 @@ A demo script, `demo.sh`, is provided in the repo root; it uses the `mosquitto_p
 
 ## Potential issues
 
-Appropriate permissions should be granted to allow the execution of `pi_rest_ledandsound/tts.sh` in order for text to speech to work correctly.
+Appropriate permissions should be granted to allow the execution of `pi_rest_ledandsound/tts.sh` in order for text to speech to work correctly. Navigate to the directory, and use
+```
+chmod u+x tts.sh
+```
+Also, in the previous directory
+```
+chmod u+x runall.sh
+```
 
 ## Authors
 
