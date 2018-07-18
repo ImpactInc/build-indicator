@@ -8,11 +8,11 @@ A device (and software behind the scenes) that keeps teams up to date on the sta
 Multiple projects and branches can be tracked, and an addressable RGB LED strip will flash/animate to indicate when things change; speaker output can utilise text-to-speech to communicate further information.
 
 ## How it works
-A collector periodically polls Bamboo's APIs to check for new builds, and utilises MQTT messages to notify any Raspberry Pi listeners of these changes. The Pis receive the data, and if relevant to the projects/branches they're interested in, they will flash/animate the RGB LEDs and play a sound/speak.
+A collector periodically polls Bamboo's APIs to check for new builds, and utilises MQTT messages to notify any Raspberry Pi listeners of these changes. The Pis receive the data, and if it is relevant to the projects/branches they're interested in, they will flash/animate the RGB LEDs and play a sound/speak.
 
 ## Hardware
 * (Optional) server to run the collector script to poll Bamboo data and publish build change messages. This can be run directly on the..
-* Raspberry Pi - receives build change messages, and sends RGB LED/audio data to an..
+* Raspberry Pi - receives build change messages, plays audio, and sends RGB LED data to an..
 * Arduino Nano - Receives RGB LED data from the Pi and drives an..
 * Addressable RGB LED strip, featuring WS2812B RGB LEDs
 * Audio speaker - connects to the Pi's standard 3.5mm audio jack
@@ -31,6 +31,9 @@ The LED strip is driven by an Arduino Nano due to the fast data rates required b
 We used NOOBS OS Installer on 16GB Class 10 SD cards.
 [OS download](https://www.raspberrypi.org/downloads/)
 Download and follow instructions.
+
+#### Optional
+Once everything is set up on the Pi, an image of the SD card can be made to quickly duplicate it onto another SD card. A guide can be found [here](https://lifehacker.com/how-to-clone-your-raspberry-pi-sd-card-for-super-easy-r-1261113524).
 
 ### Install updates
 ```
@@ -51,7 +54,7 @@ Go to Interfacing Options, Serial, disable login shell, enable serial port hardw
 
 Finish and reboot.
 
-#### Node.js
+### Node.js
 
 Install Node Version Manager if you want to easily install a specific version and be able to switch between versions:
 [NVM](https://github.com/creationix/nvm#install-script)
@@ -73,7 +76,7 @@ Install [nodemon](https://nodemon.io/):
 npm install -g nodemon
 ```
 
-#### Mosquitto
+### Mosquitto
 
 Install the Mosquitto MQQT broker on your Raspberry Pi or external server - [see here](https://learn.adafruit.com/diy-esp8266-home-security-with-lua-and-mqtt/configuring-mqtt-on-the-raspberry-pi). This should be set up securely with appropriate auth.
 ```
@@ -83,7 +86,7 @@ sudo apt-get dist-upgrade
 sudo apt-get install mosquitto mosquitto-clients
 ```
 
-#### pico2wave
+### pico2wave
 
 [Install pico2wave](https://elinux.org/RPi_Text_to_Speech_(Speech_Synthesis)) on the Raspberry Pi for speech synthesis.
 
@@ -101,7 +104,7 @@ Install Screen.
 sudo apt-get install screen
 ```
 
-#### Arduino
+### Arduino
 
 Install the Glediator protocol receiver on the Arduino - our instructions are available [here](arduino/).
 
